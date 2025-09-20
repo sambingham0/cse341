@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-    "scripts": {
-      "start": "node server.js",
-      "run": "node server.js"
-    },
+  "scripts": {
+    "start": "node server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sambingham0/cse341.git"

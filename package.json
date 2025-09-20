@@ -3,21 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "scripts": {
+      "start": "node server.js",
+      "run": "node server.js"
+    },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sambingham0/cse341.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/sambingham0/cse341/issues"
-  },
-  "homepage": "https://github.com/sambingham0/cse341#readme",
   "dependencies": {
     "express": "^5.1.0"
   }

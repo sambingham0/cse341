@@ -1,0 +1,28 @@
+GET http://localhost:8080/contacts
+
+###
+
+GET http://localhost:8080/contacts?id=68d5a9b7255b77013e21b172
+
+###
+
+GET http://localhost:8080/contacts?id=68d5aa9b255b77013e21b173
+
+###
+
+GET http://localhost:8080/contacts?id=68d5ab1d255b77013e21b174
+
+###
+GET https://cse341-bh1k.onrender.com/contacts
+
+###
+
+GET https://cse341-bh1k.onrender.com/contacts?id=68d5a9b7255b77013e21b172
+
+###
+
+GET https://cse341-bh1k.onrender.com/contacts?id=68d5aa9b255b77013e21b173
+
+###
+
+GET https://cse341-bh1k.onrender.com/contacts?id=68d5ab1d255b77013e21b174

@@ -57,7 +57,7 @@ Content-Type: application/json
 ###
 
 # Update :id
-PUT http://localhost:8080/contacts/68ded946e08512f8697ee224
+PUT http://localhost:8080/contacts/
 Content-Type: application/json
 
 {
@@ -70,22 +70,22 @@ Content-Type: application/json
 
 ###
 
-PUT https://cse341-bh1k.onrender.com/contacts/68ded3d61aa23f35c7a3363c
+PUT https://cse341-bh1k.onrender.com/contacts/
 Content-Type: application/json
 
 {
-	"firstName": "Grace",
-	"lastName": "Hopper",
-	"email": "grace.hopper@example.com",
-	"favoriteColor": "Navy",
-	"birthday": "1906-12-09"
+	"firstName": "Mister",
+	"lastName": "Example",
+	"email": "mrexample@mail.com",
+	"favoriteColor": "Black",
+	"birthday": "1327-11-10"
 }
 
 ###
 
 # DELETE a contact by id
-DELETE http://localhost:8080/contacts/68ded9faa51cb5ee095e79d3
+DELETE http://localhost:8080/contacts/
 
 ###
 
-DELETE https://cse341-bh1k.onrender.com/contacts/:id
+DELETE https://cse341-bh1k.onrender.com/contacts/

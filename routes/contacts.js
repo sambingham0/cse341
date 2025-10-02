@@ -12,4 +12,13 @@ router.get('/', (req, res, next) => {
 	}
 });
 
+// POST /contacts - create a new contact
+router.post('/', controller.createContact);
+
+// PUT /contacts/:id - update an existing contact
+router.put('/:id', controller.updateContact);
+
+// DELETE /contacts/:id - delete a contact
+router.delete('/:id', controller.deleteContact);
+
 module.exports = router;

@@ -145,7 +145,7 @@ exports.deleteContact = async (req, res) => {
       return res.status(404).json({ error: 'Contact not found.' });
     }
 
-    return res.sendStatus(204);
+    return res.sendStatus(200);
   } catch (err) {
     return res.status(500).json({ error: 'Database error', details: err.message });
   }

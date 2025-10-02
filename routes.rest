@@ -30,15 +30,15 @@ GET https://cse341-bh1k.onrender.com/contacts?id=68d5ab1d255b77013e21b174
 ###
 
 # Create a new contact 
-POST http://localhost:8080/contacts
+POST http://localhost:8080/contacts/
 Content-Type: application/json
 
 {
-	"firstName": "Ada",
-	"lastName": "Sterling",
-	"email": "ada@example.com",
-	"favoriteColor": "Teal",
-	"birthday": "1815-12-10"
+	"firstName": "Doctor",
+	"lastName": "Example",
+	"email": "drexample@mail.com",
+	"favoriteColor": "White",
+	"birthday": "2024-01-02"
 }
 
 ###
@@ -47,24 +47,24 @@ POST https://cse341-bh1k.onrender.com/contacts
 Content-Type: application/json
 
 {
-	"firstName": "Grace",
-	"lastName": "Hopper",
-	"email": "grace@example.com",
-	"favoriteColor": "Navy",
-	"birthday": "1906-12-09"
+	"firstName": "Doctor",
+	"lastName": "Example",
+	"email": "drexample@mail.com",
+	"favoriteColor": "White",
+	"birthday": "2024-01-02"
 }
 
 ###
 
-# Replace :id
-PUT http://localhost:8080/contacts/68ded731e08512f8697ee221
+# Update :id
+PUT http://localhost:8080/contacts/68ded946e08512f8697ee224
 Content-Type: application/json
 
 {
-	"firstName": "Another one?",
-	"lastName": "Test",
-	"email": "mrtestguy@mail.com",
-	"favoriteColor": "Rainbow",
+	"firstName": "Mister",
+	"lastName": "Example",
+	"email": "mrexample@mail.com",
+	"favoriteColor": "Black",
 	"birthday": "1327-11-10"
 }
 
@@ -84,7 +84,7 @@ Content-Type: application/json
 ###
 
 # DELETE a contact by id
-DELETE http://localhost:8080/contacts/68ded731e08512f8697ee221
+DELETE http://localhost:8080/contacts/68ded9faa51cb5ee095e79d3
 
 ###
 

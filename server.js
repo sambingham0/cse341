@@ -9,7 +9,8 @@ const PORT = 8080;
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
   if (req.method === 'OPTIONS') {
     return res.sendStatus(204);
   }
@@ -20,7 +21,21 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 // Swagger UI setup
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', function(req, res, next) {
+  // Dynamically set the host based on the request
+  swaggerDocument.host = req.get('host');
+  swaggerDocument.schemes = req.protocol === 'https' ? ['https'] : ['http'];
+  req.swaggerDoc = swaggerDocument;
+  next();
+}, swaggerUi.serveFiles(swaggerDocument), swaggerUi.setup());
+
+// Also serve the swagger.json for download
+app.get('/api-docs/swagger.json', (req, res) => {
+  const dynamicSwagger = { ...swaggerDocument };
+  dynamicSwagger.host = req.get('host');
+  dynamicSwagger.schemes = req.protocol === 'https' ? ['https'] : ['http'];
+  res.json(dynamicSwagger);
+});
 
 // MongoDB Atlas connection
 require('dotenv').config();

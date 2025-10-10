@@ -11,6 +11,19 @@
     "http"
   ],
   "paths": {
+    "/api-docs/swagger.json": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
     "/": {
       "get": {
         "description": "",
@@ -26,59 +39,43 @@
     },
     "/contacts/": {
       "get": {
-        "description": "Get all contacts or a specific contact by ID using query parameter",
+        "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "query",
-            "type": "string",
-            "description": "Optional contact ID to retrieve a specific contact"
+            "type": "string"
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successfully retrieved contact(s)"
-          },
           "204": {
-            "description": "No contacts found"
-          },
-          "400": {
-            "description": "Invalid request parameters"
-          },
-          "500": {
-            "description": "Internal server error"
+            "description": "No Content"
           }
         }
       },
       "post": {
-        "description": "Create a new contact",
+        "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
-            "description": "Contact information to create",
             "schema": {
               "type": "object",
               "properties": {
                 "firstName": {
-                  "type": "string",
-                  "example": "John"
+                  "example": "any"
                 },
                 "lastName": {
-                  "type": "string",
-                  "example": "Doe"
+                  "example": "any"
                 },
                 "email": {
-                  "type": "string",
-                  "example": "john.doe@email.com"
+                  "example": "any"
                 },
                 "favoriteColor": {
-                  "type": "string",
-                  "example": "Blue"
+                  "example": "any"
                 },
                 "birthday": {
-                  "type": "string",
-                  "example": "1990-05-15"
+                  "example": "any"
                 }
               }
             }
@@ -86,60 +83,53 @@
         ],
         "responses": {
           "201": {
-            "description": "Contact successfully created"
+            "description": "Created"
           },
           "204": {
             "description": "No Content"
           },
           "400": {
-            "description": "Invalid request body or missing required fields"
+            "description": "Bad Request"
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal Server Error"
           },
           "503": {
-            "description": "Database service unavailable"
+            "description": "Service Unavailable"
           }
         }
       }
     },
     "/contacts/{id}": {
       "put": {
-        "description": "Update an existing contact by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string",
-            "description": "Contact ID to update"
+            "type": "string"
           },
           {
             "name": "body",
             "in": "body",
-            "description": "Updated contact information",
             "schema": {
               "type": "object",
               "properties": {
                 "firstName": {
-                  "type": "string",
-                  "example": "Jane"
+                  "example": "any"
                 },
                 "lastName": {
-                  "type": "string",
-                  "example": "Smith"
+                  "example": "any"
                 },
                 "email": {
-                  "type": "string",
-                  "example": "jane.smith@email.com"
+                  "example": "any"
                 },
                 "favoriteColor": {
-                  "type": "string",
-                  "example": "Green"
+                  "example": "any"
                 },
                 "birthday": {
-                  "type": "string",
-                  "example": "1985-12-03"
+                  "example": "any"
                 }
               }
             }
@@ -147,51 +137,50 @@
         ],
         "responses": {
           "204": {
-            "description": "Contact successfully updated (no content returned)"
+            "description": "No Content"
           },
           "400": {
-            "description": "Invalid request body or contact ID"
+            "description": "Bad Request"
           },
           "404": {
-            "description": "Contact not found"
+            "description": "Not Found"
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal Server Error"
           },
           "503": {
-            "description": "Database service unavailable"
+            "description": "Service Unavailable"
           }
         }
       },
       "delete": {
-        "description": "Delete a contact by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string",
-            "description": "Contact ID to delete"
+            "type": "string"
           }
         ],
         "responses": {
           "200": {
-            "description": "Contact successfully deleted"
+            "description": "OK"
           },
           "204": {
-            "description": "Contact deleted (no content returned)"
+            "description": "No Content"
           },
           "400": {
-            "description": "Invalid contact ID format"
+            "description": "Bad Request"
           },
           "404": {
-            "description": "Contact not found"
+            "description": "Not Found"
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal Server Error"
           },
           "503": {
-            "description": "Database service unavailable"
+            "description": "Service Unavailable"
           }
         }
       }

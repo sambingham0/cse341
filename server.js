@@ -1,5 +1,7 @@
 const express = require('express');
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger-output.json');
 const app = express();
 const PORT = 8080;
 
@@ -16,6 +18,9 @@ app.use((req, res, next) => {
 
 // Parse JSON request bodies
 app.use(express.json());
+
+// Swagger UI setup
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // MongoDB Atlas connection
 require('dotenv').config();

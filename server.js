@@ -5,6 +5,9 @@ const swaggerDocument = require('./swagger-output.json');
 const app = express();
 const PORT = 8080;
 
+// Trust first proxy (for services like Render, Heroku, etc.)
+app.set('trust proxy', 1);
+
 // Enable CORS
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -22,9 +25,15 @@ app.use(express.json());
 
 // Swagger UI setup
 app.use('/api-docs', function(req, res, next) {
-  // Dynamically set the host based on the request
-  swaggerDocument.host = req.get('host');
-  swaggerDocument.schemes = req.protocol === 'https' ? ['https'] : ['http'];
+  // Dynamically set the host and scheme based on the request
+  const host = req.get('host');
+  const isProduction = host && !host.includes('localhost');
+  // Check for HTTPS in multiple ways
+  const isHttps = req.secure || req.get('x-forwarded-proto') === 'https' || isProduction;
+  const scheme = isHttps ? 'https' : 'http';
+  
+  swaggerDocument.host = host;
+  swaggerDocument.schemes = [scheme];
   req.swaggerDoc = swaggerDocument;
   next();
 }, swaggerUi.serveFiles(swaggerDocument), swaggerUi.setup());
@@ -32,8 +41,14 @@ app.use('/api-docs', function(req, res, next) {
 // Also serve the swagger.json for download
 app.get('/api-docs/swagger.json', (req, res) => {
   const dynamicSwagger = { ...swaggerDocument };
-  dynamicSwagger.host = req.get('host');
-  dynamicSwagger.schemes = req.protocol === 'https' ? ['https'] : ['http'];
+  const host = req.get('host');
+  const isProduction = host && !host.includes('localhost');
+  // Check for HTTPS in multiple ways
+  const isHttps = req.secure || req.get('x-forwarded-proto') === 'https' || isProduction;
+  const scheme = isHttps ? 'https' : 'http';
+  
+  dynamicSwagger.host = host;
+  dynamicSwagger.schemes = [scheme];
   res.json(dynamicSwagger);
 });
 

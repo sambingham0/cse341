@@ -5,10 +5,10 @@
     "description": "API project for managing contacts",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "cse341-bh1k.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api-docs/swagger.json": {
@@ -39,43 +39,59 @@
     },
     "/contacts/": {
       "get": {
-        "description": "",
+        "description": "Get all contacts or a specific contact by ID using query parameter",
         "parameters": [
           {
             "name": "id",
             "in": "query",
-            "type": "string"
+            "type": "string",
+            "description": "Optional contact ID to retrieve a specific contact"
           }
         ],
         "responses": {
+          "200": {
+            "description": "Successfully retrieved contact(s)"
+          },
           "204": {
-            "description": "No Content"
+            "description": "No contacts found"
+          },
+          "400": {
+            "description": "Invalid request parameters"
+          },
+          "500": {
+            "description": "Internal server error"
           }
         }
       },
       "post": {
-        "description": "",
+        "description": "Create a new contact",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "description": "Contact information to create",
             "schema": {
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "John"
                 },
                 "lastName": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Doe"
                 },
                 "email": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "john.doe@email.com"
                 },
                 "favoriteColor": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Blue"
                 },
                 "birthday": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "1990-05-15"
                 }
               }
             }
@@ -83,19 +99,19 @@
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Contact successfully created"
           },
           "204": {
             "description": "No Content"
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Invalid request body or missing required fields"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal server error"
           },
           "503": {
-            "description": "Service Unavailable"
+            "description": "Database service unavailable"
           }
         }
       }
